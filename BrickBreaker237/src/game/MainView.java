@@ -13,7 +13,10 @@ import java.awt.event.MouseEvent;
 public class MainView {
 
 	private JFrame frmBrickBreak;
-
+    private static final int screenDim = 500;
+    private static final int brickRow = 4;
+    private static final int brickCol = 10;
+    
 	/**
 	 * Launch the application.
 	 */
@@ -82,8 +85,7 @@ public class MainView {
 	
 	public void openGame() {
         JFrame gameView = new JFrame();
-        GameBoard gameBoard = new GameBoard();
-
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol);
         gameView.setTitle("Brick Breaker");
         gameView.setBounds(0, 0, 500, 500);
 		gameView.setResizable(false);
@@ -91,6 +93,8 @@ public class MainView {
         gameView.getContentPane().add(gameBoard);
 
         gameView.setVisible(true);
+        
+        gameBoard.runGame();
 	}
 	
 	public void openScoreboard() {
