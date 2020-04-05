@@ -14,4 +14,9 @@ public class Highscore {
 		return csvFormatted;
 	}
 	
+	@Override
+	public String toString() {
+		return name + " : " + score.toString();
+	}
+	
 }
