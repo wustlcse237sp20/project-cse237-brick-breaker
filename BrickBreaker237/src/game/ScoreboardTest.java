@@ -50,13 +50,14 @@ class ScoreboardTest {
 	}
 	
 	@Test
-	void testSaveNewHighscore() {
+	void testAddNewHighscore() {
 		Scoreboard scoreboard = new Scoreboard();
 		
 		ArrayList<Highscore> originalScores = scoreboard.getHighscores();
 		Integer originalScoreCount = originalScores.size();
 		
 		Highscore newHighscore = new Highscore("Test", 10);
+		scoreboard.addHighscore(newHighscore);
 		ArrayList<Highscore> updatedScores =  scoreboard.getHighscores();
 		Integer updatedScoreCount = updatedScores.size();
 		

@@ -8,4 +8,10 @@ public class Highscore {
 		this.name = name;
 		this.score = score;
 	}
+	
+	public String toCSV() {
+		String csvFormatted = name + "," + score;
+		return csvFormatted;
+	}
+	
 }
