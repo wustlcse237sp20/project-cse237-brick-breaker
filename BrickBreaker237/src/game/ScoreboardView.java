@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 public class ScoreboardView extends JPanel {
+	private ScoreboardController scoreboardController = new ScoreboardController();
 
 	/**
 	 * Create the panel.
@@ -14,7 +15,7 @@ public class ScoreboardView extends JPanel {
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
-		JList list = new JList();
+		JList list = new JList(scoreboardController.getHighscores());
 		springLayout.putConstraint(SpringLayout.NORTH, list, 70, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, list, -358, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, list, -54, SpringLayout.SOUTH, this);

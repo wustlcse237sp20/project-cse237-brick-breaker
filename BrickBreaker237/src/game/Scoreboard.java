@@ -60,7 +60,7 @@ public class Scoreboard {
 		}
 	}
 	
-	private Boolean saveHighscoresToDisk() {
+	public Boolean saveHighscoresToDisk() {
 		try {
 			permanentStorage.createNewFile();
 			FileWriter scoreboardWriter = new FileWriter(permanentStorage);

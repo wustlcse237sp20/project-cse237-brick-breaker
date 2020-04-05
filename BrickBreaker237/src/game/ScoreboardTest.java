@@ -12,9 +12,11 @@ import org.junit.jupiter.api.Test;
 class ScoreboardTest {
 	
 	@Test
-	void testDefaultInitialization() {
+	void testSaveToDisk() {
 		String filePath = Scoreboard.defaultFilePath;
 		Scoreboard scoreboard = new Scoreboard();
+		Boolean saved = scoreboard.saveHighscoresToDisk();
+		assertTrue(saved);
 		try {
 			File scoreboardDatabase = new File(filePath);
 			Scanner fileReader = new Scanner(scoreboardDatabase);
@@ -63,7 +65,6 @@ class ScoreboardTest {
 		
 		assertEquals(originalScoreCount + 1, updatedScoreCount);
 		assertTrue(updatedScores.contains(newHighscore));
-		assertFalse(originalScores.contains(newHighscore));
 		
 	}
 }
