@@ -69,6 +69,12 @@ public class MainView {
 		frmBrickBreak.getContentPane().add(btnPlay);
 		
 		JButton btnScoreboard = new JButton("Scoreboard");
+		btnScoreboard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				openScoreboard();
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnScoreboard, 26, SpringLayout.SOUTH, btnPlay);
 		springLayout.putConstraint(SpringLayout.EAST, btnScoreboard, -164, SpringLayout.EAST, frmBrickBreak.getContentPane());
 		frmBrickBreak.getContentPane().add(btnScoreboard);
@@ -89,5 +95,14 @@ public class MainView {
 	
 	public void openScoreboard() {
 		// TODO: Replace current content with scoreboard
+		JFrame scoreboardView = new JFrame();
+		ScoreboardView scoreboard = new ScoreboardView();
+		scoreboardView.setTitle("Brick Breaker");
+		scoreboardView.setBounds(0, 0, 500, 500);
+        scoreboardView.setResizable(false);
+		scoreboardView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		scoreboardView.add(scoreboard);
+		
+		scoreboardView.setVisible(true);
 	}
 }
