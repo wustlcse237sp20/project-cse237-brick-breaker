@@ -67,11 +67,28 @@ public class GameBoard extends JPanel {
 		for (int i = 0; i < breakableBricks.length; i++) {
 			for (int j = 0; j < breakableBricks[0].length; j++) {
 				BreakableBrick brick = breakableBricks[i][j];
+				int health= breakableBricks[i][j].getHealth();
 				// if brick still has health, repaint it
-				if (breakableBricks[i][j].getHealth() > 0) {
-					g.setColor(Color.green);
-					g.drawRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
+				switch (health) {
+				  case 0:
+					g.setColor(Color.BLACK);
+				    break;
+				  case 1:
+					g.setColor(Color.YELLOW);
+				    break;
+				  case 2:
+					  g.setColor(Color.ORANGE);
+				    break;
+				  case 3:
+					g.setColor(Color.GREEN);
+				    break;
 				}
+				g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
+				
+				//draw outline
+				g.setColor(Color.BLACK);
+				g.drawRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
+
 			}
 		}
 	}
