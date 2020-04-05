@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BrickBreaker237/src"/>
+	<classpathentry kind="lib" path="dependencies/hamcrest-core-2.2.jar"/>
+	<classpathentry kind="lib" path="dependencies/junit-4.12.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
