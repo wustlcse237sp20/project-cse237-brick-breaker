@@ -59,7 +59,7 @@ public class MainView {
 		btnPlay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				startGame();
+				openGame();
 			}
 		});
 		springLayout.putConstraint(SpringLayout.NORTH, btnPlay, 36, SpringLayout.SOUTH, lblBrickBreaker);
@@ -74,7 +74,7 @@ public class MainView {
 		frmBrickBreak.getContentPane().add(btnScoreboard);
 	}
 	
-	public void startGame() {
+	public void openGame() {
         JFrame gameView = new JFrame();
         GameBoard gameBoard = new GameBoard();
 
@@ -85,5 +85,9 @@ public class MainView {
         gameView.getContentPane().add(gameBoard);
 
         gameView.setVisible(true);
+	}
+	
+	public void openScoreboard() {
+		// TODO: Replace current content with scoreboard
 	}
 }
