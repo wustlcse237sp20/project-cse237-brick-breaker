@@ -83,6 +83,9 @@ public class MainView {
 		frmBrickBreak.getContentPane().add(btnScoreboard);
 	}
 	
+	/**
+	 * Initialize game instance and run game
+	 */
 	public void openGame() {
         JFrame gameView = new JFrame();
         GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol);
