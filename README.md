@@ -16,4 +16,4 @@ What user stories do you intend to complete next iteration?
 
 Is there anything that you implemented but doesn't currently work?
 
-	Special brick types.
+	Special brick types. We also implemented the ability for the player to chose his paddle color but there is currently no prompt for them to do so.
