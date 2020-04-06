@@ -109,4 +109,8 @@ public class GameBoard extends JPanel {
 		}
 	}
 
+	public BreakableBrick[][] getBreakableBricks() {
+		return breakableBricks;
+	}
+
 }
