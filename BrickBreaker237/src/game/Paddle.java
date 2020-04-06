@@ -11,7 +11,7 @@ public class Paddle
     private int height = 20;
     private int length = 100;
     
-    ArrayList<Color> paddleColors = new ArrayList<Color>( Arrays.asList(Color.RED, Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE));
+    ArrayList<Color> possiblePaddleColors = new ArrayList<Color>( Arrays.asList(Color.RED, Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE));
     
     public Paddle()
     {
@@ -21,11 +21,12 @@ public class Paddle
     }
     
     //If the player wants a specific color they will enter it when prompted and receive a paddle of that color
+    //TODO: Proper implementation of this in the Main View
     public Paddle(Color specificColor)
     {
     	posX = 200;
     	posY = 100;
-    	if(paddleColors.contains(specificColor))
+    	if(possiblePaddleColors.contains(specificColor))
     	{
     		myPaddleColor = specificColor;
     	}
@@ -45,6 +46,16 @@ public class Paddle
     	return posY;
     }
     
+    public int getHeight()
+    {
+    	return height;
+    }
+    
+    public int getLength()
+    {
+    	return length;
+    }
+    
     public void setX(int newX)
     {
     	posX = newX;
@@ -53,16 +64,6 @@ public class Paddle
     public void setY(int newY)
     {
     	posY = newY;
-    }
-    
-    //checks whether the ball is at the same X and Y that the paddle should be at
-    public boolean hitBall(int ballX, int ballY, int ballHeight, int ballLength)
-    {
-    	if((ballX + ballLength >= posX) && (ballX <= posX + length) && (ballY + ballHeight >= posY) && (ballY <= posY + height))
-    	{
-    		return true;
-    	}
-    	return false;
     }
     
     public void draw(Graphics g)

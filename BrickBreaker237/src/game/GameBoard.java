@@ -80,9 +80,8 @@ public class GameBoard extends JPanel implements KeyListener
 			{
 				if (!gameOver) {
 					userBall.updatePos();
-					wallBounce(userBall);
-					ballHitPaddle(userBall, userPaddle);
-					repaint();
+					ifHitWallBounce(userBall);
+					ifBallHitPaddleBounce(userBall, userPaddle);
 					repaint();
 				} else {
 					// game over state
@@ -98,14 +97,15 @@ public class GameBoard extends JPanel implements KeyListener
 		userBall.draw(g);
 	}
 	/**
-	 * Checks the positions of the Ball and Paddle to see whether they hit each other. If so the ball 
-	 * direction is changed
+	 * Checks the positions of the Ball and Paddle to see whether they hit each other. If so the ball's 
+	 * y-direction is inverted
 	 * @param myBall
 	 * @param myPaddle
 	 */
-	public void ballHitPaddle(Ball myBall, Paddle myPaddle)
+	public void ifBallHitPaddleBounce(Ball myBall, Paddle myPaddle)
 	{
-		if(myPaddle.hitBall(myBall.getX(), myBall.getY(), myBall.getHeight(), myBall.getLength()))
+		if((myBall.getX()+ myBall.getLength() >= myPaddle.getX()) && (myBall.getX() <= myPaddle.getX() + myPaddle.getLength()) && 
+			(myBall.getY() + myBall.getHeight() >= myPaddle.getY()) && (myBall.getY() <= myPaddle.getY() + myPaddle.getHeight()))
 		{
 			myBall.setYdir(-1*myBall.getYdir());
 		}
@@ -116,7 +116,7 @@ public class GameBoard extends JPanel implements KeyListener
 	 * changes the X and Y directions appropriately
 	 * @param myBall
 	 */
-	public void wallBounce(Ball myBall)
+	public void ifHitWallBounce(Ball myBall)
 	{
 		if(myBall.getX() + myBall.getLength() > 488)
 		{
