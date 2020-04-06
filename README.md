@@ -17,3 +17,7 @@ What user stories do you intend to complete next iteration?
 Is there anything that you implemented but doesn't currently work?
 
 	Special brick types. We also implemented the ability for the player to chose his paddle color but there is currently no prompt for them to do so.
+
+What commands are needed to compile and run your code from the command line?
+
+	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This should compile and launch the game (assuming java is installed).
