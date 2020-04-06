@@ -15,25 +15,25 @@ public class Paddle
     
     public Paddle()
     {
-    	posX = 200;
-    	posY = 450;
-    	myPaddleColor = Color.BLACK;
+	    	posX = 200;
+	    	posY = 450;
+	    	myPaddleColor = Color.BLACK;
     }
     
     //If the player wants a specific color they will enter it when prompted and receive a paddle of that color
     //TODO: Proper implementation of this in the Main View
     public Paddle(Color specificColor)
     {
-    	posX = 200;
-    	posY = 100;
-    	if(possiblePaddleColors.contains(specificColor))
-    	{
-    		myPaddleColor = specificColor;
-    	}
-    	else
-    	{
-    		myPaddleColor = Color.BLACK;
-    	}
+	    	posX = 200;
+	    	posY = 100;
+	    	if(possiblePaddleColors.contains(specificColor))
+	    	{
+	    		myPaddleColor = specificColor;
+	    	}
+	    	else
+	    	{
+	    		myPaddleColor = Color.BLACK;
+	    	}
     }
     
     public int getX()

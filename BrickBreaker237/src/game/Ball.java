@@ -17,64 +17,62 @@ public class Ball
     
     public Ball()
     {
-    	posX = 240;
-    	posY = 430;
-    	dirX = 3;
-    	dirY = -3;
-    	myBallColor = red;
+	    	posX = 240;
+	    	posY = 430;
+	    	dirX = 3;
+	    	dirY = -3;
+	    	myBallColor = red;
     }
     
-  //returns top left X position used to draw the ball
     public int getX()
     {
-    	return posX;
+    		return posX;
     }
     
-    //return top left Y position used to draw ball
     public int getY()
     {
-    	return posY;
+    		return posY;
     }
     
     public int getHeight()
     {
-    	return height;
+    		return height;
     }
     
     public int getLength()
     {
-    	return length;
+    		return length;
     }
     
     public int getXdir()
     {
-    	return dirX;
+    		return dirX;
     }
     
     public int getYdir()
     {
-    	return dirY;
+    		return dirY;
     }
     
     public void setXdir(int newXdir)
     {
-    	dirX = newXdir;
+    		dirX = newXdir;
     }
     
     public void setYdir(int newYdir)
     {
-    	dirY = newYdir;
+    		dirY = newYdir;
     }
     
     public void updatePos()
     {
-    	posX += dirX;
-    	posY += dirY;
+    		posX += dirX;
+    		posY += dirY;
     }
     
     public void draw(Graphics g)
     {
-    	g.setColor(myBallColor);
-    	g.fillOval(posX, posY, length, height);
+    		g.setColor(myBallColor);
+    		g.fillOval(posX, posY, length, height);
     }
 }

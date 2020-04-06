@@ -1,6 +1,7 @@
 package game;
 
 public class BreakableBrick implements Brick {
+	
 	public int health;
 	public int row;
 	public int col;
@@ -30,7 +31,6 @@ public class BreakableBrick implements Brick {
 		if (health < 1) {
 			destroyBrick();
 		}
-
 	}
 
 	public int getHealth() {

@@ -1,7 +1,6 @@
 package game;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.SpringLayout;
 import javax.swing.JButton;
@@ -18,7 +17,7 @@ public class MainView {
     private static final int brickCol = 10;
     
 	/**
-	 * Launch the application.
+	 * Sets up and launches the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -33,9 +32,6 @@ public class MainView {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public MainView() {
 		initialize();
 	}
