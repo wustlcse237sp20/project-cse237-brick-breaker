@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class GameBoard extends JPanel implements KeyListener
+public class GameBoard extends JPanel //implements KeyListener
 {
 	private static final int FPS = 60;
 	public BreakableBrick breakableBricks[][];
@@ -24,34 +24,34 @@ public class GameBoard extends JPanel implements KeyListener
 
 	public GameBoard(int boardDim, int brickRow, int brickCol) 
 	{
-		addKeyListener(new KeyListener() 
-		{
-			   @Override
-			   public void keyTyped(KeyEvent e) 
-			   {
-				   //Not written yet
-			   }
-			   
-			   @Override
-			   public void keyReleased(KeyEvent e) 
-			   {
-				   //Not written yet
-			   }
-			   
-			   @Override
-			   public void keyPressed(KeyEvent e) 
-			   {
-			    	int key = e.getKeyCode();
-			    	if (key == KeyEvent.VK_LEFT) 
-			    	{
-						userPaddle.setX(userPaddle.getX() - 50);
-					}
-					if (key == KeyEvent.VK_RIGHT) 
-					{
-						userPaddle.setX(userPaddle.getX() + 50);
-					}
-			   }
-		});
+//		addKeyListener(new KeyListener() 
+//		{
+//			   @Override
+//			   public void keyTyped(KeyEvent e) 
+//			   {
+//				   //Not written yet
+//			   }
+//			   
+//			   @Override
+//			   public void keyReleased(KeyEvent e) 
+//			   {
+//				   //Not written yet
+//			   }
+//			   
+//			   @Override
+//			   public void keyPressed(KeyEvent e) 
+//			   {
+//			    	int key = e.getKeyCode();
+//			    	if (key == KeyEvent.VK_LEFT) 
+//			    	{
+//						userPaddle.setX(userPaddle.getX() - 50);
+//					}
+//					if (key == KeyEvent.VK_RIGHT) 
+//					{
+//						userPaddle.setX(userPaddle.getX() + 50);
+//					}
+//			   }
+//		});
 		setFocusable(true);
 		this.brickRow = brickRow;
 		this.brickCol = brickCol;
