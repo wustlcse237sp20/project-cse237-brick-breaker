@@ -57,11 +57,11 @@ public class GameBoard extends JPanel {
 	}
 
 	/**
-	 * init game board of bricks
+	 * init gameboard of bricks
 	 * 
 	 * @param col column brick is in
 	 * @param row row brick is in
-	 * @return
+	 * @return 2d array of breakable brick objects
 	 */
 	public BreakableBrick[][] initBricks(int col, int row) {
 		BreakableBrick brickArray[][] = new BreakableBrick[col][row];
@@ -84,7 +84,6 @@ public class GameBoard extends JPanel {
 			for (int j = 0; j < breakableBricks[0].length; j++) {
 				BreakableBrick brick = breakableBricks[i][j];
 				int health = breakableBricks[i][j].getHealth();
-				// if brick still has health, repaint it
 				switch (health) {
 				case 0:
 					g.setColor(Color.BLACK);
@@ -100,8 +99,6 @@ public class GameBoard extends JPanel {
 					break;
 				}
 				g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
-
-				// draw outline
 				g.setColor(Color.BLACK);
 				g.drawRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 
