@@ -87,6 +87,7 @@ public class GameBoard extends JPanel //implements KeyListener
 				if (!gameOver) {
 					userBall.updatePos();
 					ifHitWallBounce(userBall);
+					ifHitBrickBounce(userBall);
 					ifBallHitPaddleBounce(userBall, userPaddle);
 					repaint();
 				} else {
@@ -141,7 +142,59 @@ public class GameBoard extends JPanel //implements KeyListener
 			myBall.setYdir(posDirection);
 		}
 	}
-	
+
+	/**
+	 * Looks at the positions and size of the ball to determine if it will hit a block and, if so,
+	 * changes the X and Y directions appropriately and subtracts health from block
+	 * @param myBall
+	 */
+	public void ifHitBrickBounce(Ball myBall)
+	{
+		for (int i = 0; i < brickCol; i++) {
+			for (int j = 0; j < brickRow; j++) {
+				//block hit left side
+				int blockX = breakableBricks[i][j].getxCoordinate();
+				int blockY = breakableBricks[i][j].getyCoordinate();
+				int blockXDim = breakableBricks[i][j].getxDim();
+				int blockYDim = breakableBricks[i][j].getyDim();
+
+				if(breakableBricks[i][j].getHealth() > 0){
+					//top side
+					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
+							&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
+					{
+						myBall.setYdir(-1*myBall.getYdir());
+						breakableBricks[i][j].damageBrick();
+					}
+					
+					//right side
+					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
+						&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
+					{
+						myBall.setXdir(-1*myBall.getXdir());
+						breakableBricks[i][j].damageBrick();
+					}
+
+					//bottom side
+					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
+							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
+					{
+						myBall.setYdir(-1*myBall.getYdir());
+						breakableBricks[i][j].damageBrick();
+					}
+
+					//left side
+					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
+							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
+					{
+						myBall.setXdir(-1*myBall.getXdir());
+						breakableBricks[i][j].damageBrick();
+					}
+				}
+			}
+		}
+	}
+
 	public BreakableBrick[][] initBricks(int col, int row) {
 		BreakableBrick brickArray[][] = new BreakableBrick[col][row];
 		for (int i = 0; i < col; i++) {
@@ -165,24 +218,24 @@ public class GameBoard extends JPanel //implements KeyListener
 				// if brick still has health, repaint it
 				switch (health) {
 				  case 0:
-					g.setColor(Color.BLACK);
+					g.setColor(Color.white);
+					g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 1:
 					g.setColor(Color.YELLOW);
+					g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 2:
 					  g.setColor(Color.ORANGE);
+					  g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 3:
 					g.setColor(Color.GREEN);
+					g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				}
-				g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
-				
-				//draw outline
 				g.setColor(Color.BLACK);
 				g.drawRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
-
 			}
 		}
 	}

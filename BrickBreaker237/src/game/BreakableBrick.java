@@ -27,7 +27,9 @@ public class BreakableBrick implements Brick {
 
 	@Override
 	public void damageBrick() {
-		health -= 1;
+		if(health>0){
+			health -= 1;
+		}
 		if (health < 1) {
 			destroyBrick();
 		}
