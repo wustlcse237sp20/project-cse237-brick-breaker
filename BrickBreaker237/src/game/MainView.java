@@ -12,9 +12,10 @@ import java.awt.event.MouseEvent;
 public class MainView {
 
 	private JFrame frmBrickBreak;
-    private static final int screenDim = 500;
-    private static final int brickRow = 4;
-    private static final int brickCol = 10;
+	private static final int screenDim = 500;
+	private static final int screenTopLeftCornerDim = 100;
+	private static final int brickRow = 4;
+	private static final int brickCol = 10;
     
 	/**
 	 * Sets up and launches the application.
@@ -86,7 +87,7 @@ public class MainView {
         JFrame gameView = new JFrame();
         GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol);
         gameView.setTitle("Brick Breaker");
-        gameView.setBounds(0, 0, 500, 500);
+        gameView.setBounds(screenTopLeftCornerDim, screenTopLeftCornerDim, screenDim, screenDim);
 		gameView.setResizable(false);
         gameView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         gameView.getContentPane().add(gameBoard);
@@ -101,7 +102,7 @@ public class MainView {
 		JFrame scoreboardView = new JFrame();
 		ScoreboardView scoreboard = new ScoreboardView();
 		scoreboardView.setTitle("Brick Breaker");
-		scoreboardView.setBounds(0, 0, 500, 500);
+		scoreboardView.setBounds(screenTopLeftCornerDim, screenTopLeftCornerDim, screenDim, screenDim);
         scoreboardView.setResizable(false);
 		scoreboardView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		scoreboardView.add(scoreboard);
