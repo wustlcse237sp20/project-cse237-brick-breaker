@@ -10,13 +10,15 @@ public class Paddle
     
     private int height = 20;
     private int length = 100;
-    
+    private static int initX = 200;
+    private static int initY = 450;
+
     ArrayList<Color> possiblePaddleColors = new ArrayList<Color>( Arrays.asList(Color.RED, Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE));
     
     public Paddle()
     {
-	    	posX = 200;
-	    	posY = 450;
+	    	posX = initX;
+	    	posY = initY;
 	    	myPaddleColor = Color.BLACK;
     }
     
@@ -24,8 +26,8 @@ public class Paddle
     //TODO: Proper implementation of this in the Main View
     public Paddle(Color specificColor)
     {
-	    	posX = 200;
-	    	posY = 100;
+	    	posX = initX;
+	    	posY = initY;
 	    	if(possiblePaddleColors.contains(specificColor))
 	    	{
 	    		myPaddleColor = specificColor;

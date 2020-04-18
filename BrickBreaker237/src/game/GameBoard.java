@@ -11,16 +11,21 @@ import java.util.concurrent.TimeUnit;
 public class GameBoard extends JPanel //implements KeyListener
 {
 	private static final int FPS = 60;
+	private static final int initalBrickHealth = 3;
+
 	public BreakableBrick breakableBricks[][];
 	Paddle userPaddle = new Paddle();
 	Ball userBall = new Ball();
-	public int initalBrickHealth = 3;
-	public int brickHeight;
-	public int brickWidth;
-	public int brickRow;
-	public int brickCol;
-	public int boardDim;
-	public boolean gameOver = false;
+
+	private int brickHeight;
+	private int brickWidth;
+	private int brickRow;
+	private int brickCol;
+	private int boardDim;
+	private boolean gameOver;
+
+	private int posDirection = 3;
+	private int negDirection = -3;
 
 	public GameBoard(int boardDim, int brickRow, int brickCol) 
 	{
@@ -53,6 +58,7 @@ public class GameBoard extends JPanel //implements KeyListener
 //			   }
 //		});
 		setFocusable(true);
+		this.gameOver = false;
 		this.brickRow = brickRow;
 		this.brickCol = brickCol;
 		this.boardDim = boardDim;
@@ -118,21 +124,21 @@ public class GameBoard extends JPanel //implements KeyListener
 	 */
 	public void ifHitWallBounce(Ball myBall)
 	{
-		if(myBall.getX() + myBall.getLength() > 488)
+		if(myBall.getX() + myBall.getLength() > boardDim)
 		{
-			myBall.setXdir(-3);
+			myBall.setXdir(negDirection);
 		}
-		if(myBall.getY() + myBall.getHeight() > 465)
+		if(myBall.getY() + myBall.getHeight() > boardDim)
 		{
-			myBall.setYdir(-3);
+			myBall.setYdir(negDirection);
 		}
 		if(myBall.getX() < 0)
 		{
-			myBall.setXdir(3);
+			myBall.setXdir(posDirection);
 		}
 		if(myBall.getY() < 0)
 		{
-			myBall.setYdir(3);
+			myBall.setYdir(posDirection);
 		}
 	}
 	

@@ -13,15 +13,19 @@ public class Ball
     
     private int length = 20;
     private int height = 20;
-    private Color red = Color.RED;
-    
+
+    private int initX = 240;
+    private int initY = 430;
+    private int initDirX = 3;
+    private int initDirY = -3;
+
     public Ball()
     {
-	    	posX = 240;
-	    	posY = 430;
-	    	dirX = 3;
-	    	dirY = -3;
-	    	myBallColor = red;
+	    	posX = initX;
+	    	posY = initY;
+	    	dirX = initDirX;
+	    	dirY = -initDirY;
+	    	myBallColor = Color.RED;
     }
     
     public int getX()
