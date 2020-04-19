@@ -148,7 +148,7 @@ public class GameBoard extends JPanel //implements KeyListener
 	 * changes the X and Y directions appropriately and subtracts health from block
 	 * @param myBall
 	 */
-	public void ifHitBrickBounce(Ball myBall)
+	public boolean ifHitBrickBounce(Ball myBall)
 	{
 		for (int i = 0; i < brickCol; i++) {
 			for (int j = 0; j < brickRow; j++) {
@@ -165,6 +165,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					{
 						myBall.setYdir(-1*myBall.getYdir());
 						breakableBricks[i][j].damageBrick();
+						return true;
 					}
 					
 					//right side
@@ -173,6 +174,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					{
 						myBall.setXdir(-1*myBall.getXdir());
 						breakableBricks[i][j].damageBrick();
+						return true;
 					}
 
 					//bottom side
@@ -181,6 +183,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					{
 						myBall.setYdir(-1*myBall.getYdir());
 						breakableBricks[i][j].damageBrick();
+						return true;
 					}
 
 					//left side
@@ -189,10 +192,12 @@ public class GameBoard extends JPanel //implements KeyListener
 					{
 						myBall.setXdir(-1*myBall.getXdir());
 						breakableBricks[i][j].damageBrick();
+						return true;
 					}
 				}
 			}
 		}
+		return false;
 	}
 
 	public BreakableBrick[][] initBricks(int col, int row) {
@@ -222,11 +227,11 @@ public class GameBoard extends JPanel //implements KeyListener
 					g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 1:
-					g.setColor(Color.YELLOW);
+					g.setColor(Color.ORANGE);
 					g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 2:
-					  g.setColor(Color.ORANGE);
+					  g.setColor(Color.YELLOW);
 					  g.fillRect(i * brickHeight, j * brickWidth, brickHeight, brickWidth);
 				    break;
 				  case 3:
@@ -242,5 +247,9 @@ public class GameBoard extends JPanel //implements KeyListener
 	
 	public BreakableBrick[][] getBreakableBricks() {
 		return breakableBricks;
+	}
+	
+	public Ball getBall() {
+		return userBall;
 	}
 }
