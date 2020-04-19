@@ -164,7 +164,7 @@ public class GameBoard extends JPanel //implements KeyListener
 							&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
 						myBall.setYdir(-1*myBall.getYdir());
-						breakableBricks[i][j].damageBrick();
+						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
 					
@@ -173,7 +173,7 @@ public class GameBoard extends JPanel //implements KeyListener
 						&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
 						myBall.setXdir(-1*myBall.getXdir());
-						breakableBricks[i][j].damageBrick();
+						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
 
@@ -182,7 +182,7 @@ public class GameBoard extends JPanel //implements KeyListener
 							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
 						myBall.setYdir(-1*myBall.getYdir());
-						breakableBricks[i][j].damageBrick();
+						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
 
@@ -191,7 +191,7 @@ public class GameBoard extends JPanel //implements KeyListener
 							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
 						myBall.setXdir(-1*myBall.getXdir());
-						breakableBricks[i][j].damageBrick();
+						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
 				}

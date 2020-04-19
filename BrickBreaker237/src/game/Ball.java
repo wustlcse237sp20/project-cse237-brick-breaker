@@ -10,6 +10,7 @@ public class Ball
     private int dirX;
     private int dirY;
     private Color myBallColor;
+    public int damage = 1;
     
     private int length = 20;
     private int height = 20;

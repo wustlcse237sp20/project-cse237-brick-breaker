@@ -3,6 +3,6 @@ package game;
 public interface Brick {
 	
 	public void destroyBrick();
-	public void damageBrick();
+	public int damageBrick(int damage);
 	
 }

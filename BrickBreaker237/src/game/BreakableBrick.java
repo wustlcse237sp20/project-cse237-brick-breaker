@@ -26,13 +26,15 @@ public class BreakableBrick implements Brick {
 	}
 
 	@Override
-	public void damageBrick() {
-		if(health>0){
-			health -= 1;
+	public int damageBrick(int damage) {
+		if(health >= damage){
+			health -= damage;
 		}
-		if (health < 1) {
-			destroyBrick();
+		else {
+			health = 0;
 		}
+		
+		return health;
 	}
 
 	public int getHealth() {
