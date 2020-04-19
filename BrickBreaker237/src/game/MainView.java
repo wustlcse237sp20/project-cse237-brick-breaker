@@ -14,8 +14,8 @@ public class MainView {
 	private JFrame frmBrickBreak;
 	private static final int screenDim = 500;
 	private static final int screenTopLeftCornerDim = 100;
-	private static final int brickRow = 4;
-	private static final int brickCol = 10;
+	private static final int brickRow = 10;
+	private static final int brickCol = 16;
     
 	/**
 	 * Sets up and launches the application.
