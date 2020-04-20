@@ -9,7 +9,8 @@ public class Ball
     private int posY;
     private int dirX;
     private int dirY;
-    private Color myBallColor;
+    public Color color;
+    public int damage = 1;
     
     private int length = 20;
     private int height = 20;
@@ -25,7 +26,7 @@ public class Ball
 	    	posY = initY;
 	    	dirX = initDirX;
 	    	dirY = -initDirY;
-	    	myBallColor = Color.RED;
+	    	color = Color.RED;
     }
     
     public int getX()
@@ -74,9 +75,21 @@ public class Ball
     		posY += dirY;
     }
     
+    public void applyPowerUp(PowerUpBrick powerUp) {
+    	PowerUpType type = powerUp.getType();
+    	switch(type) {
+	    	case DAMAGE: {
+	    		damage = damage * powerUp.getMultiplier();
+	    	}
+		default:
+			break;
+    	}
+    	
+    }
+    
     public void draw(Graphics g)
     {
-    		g.setColor(myBallColor);
+    		g.setColor(color);
     		g.fillOval(posX, posY, length, height);
     }
 }
