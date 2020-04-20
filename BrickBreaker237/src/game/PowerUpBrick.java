@@ -47,5 +47,17 @@ public class PowerUpBrick implements Brick {
 	public int getMultiplier() {
 		return multiplier;
 	}
+	
+	public boolean collisionDetected(int otherX, int otherY) {
+		int start = xCoordinate;
+		int end = xCoordinate + xDim;
+		boolean withinXBounds = (otherX >= start) && (otherX <= end);
+		
+		int top = yCoordinate;
+		int bottom = yCoordinate + yDim;
+		boolean withinYBounds = (otherY >= top) && (otherY <= bottom);
+		
+		return withinXBounds && withinYBounds;
+	}
 
 }

@@ -14,7 +14,7 @@ public class GameBoard extends JPanel //implements KeyListener
 	private static final int initalBrickHealth = 3;
 
 	public BreakableBrick breakableBricks[][];
-	public PowerUpBrick powerUpBricks[][];
+	public PowerUpBrick powerUpBricks[];
 	Paddle userPaddle = new Paddle();
 	Ball userBall = new Ball();
 
@@ -66,7 +66,7 @@ public class GameBoard extends JPanel //implements KeyListener
 		this.brickHeight = boardDim / brickCol;
 		this.brickWidth = brickHeight / 2;
 		breakableBricks = initBricks(brickCol, brickRow);
-		powerUpBricks = initPowerUpBricks(1,1);
+		powerUpBricks = initPowerUpBricks(1);
 	}
 
 	protected void paintComponent(Graphics g) 
@@ -91,6 +91,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					userBall.updatePos();
 					ifHitWallBounce(userBall);
 					ifHitBrickBounce(userBall);
+					ifHitPowerUpApply(userBall);
 					ifBallHitPaddleBounce(userBall, userPaddle);
 					repaint();
 				} else {
@@ -213,13 +214,12 @@ public class GameBoard extends JPanel //implements KeyListener
 		return brickArray;
 	}
 	
-	public PowerUpBrick[][] initPowerUpBricks(int col, int row) {
+	public PowerUpBrick[] initPowerUpBricks(int total) {
 		// TODO: Change location from hardcoded values
-		PowerUpBrick powerUpBricks[][] = new PowerUpBrick[col][row];
-		for (int i = 0; i < col; i++) {
-			for (int j = 0; j < row; j++) {
-				powerUpBricks[i][j] = new PowerUpBrick(brickWidth , brickHeight, 250, 250, PowerUpType.DAMAGE, 2);
-			}
+		PowerUpBrick powerUpBricks[] = new PowerUpBrick[total];
+		for (int i = 0; i < total; i++) {
+			powerUpBricks[i] = new PowerUpBrick(brickWidth , brickHeight, 250, 250, PowerUpType.DAMAGE, 2);
+			
 		}
 		return powerUpBricks;
 	}
@@ -261,14 +261,31 @@ public class GameBoard extends JPanel //implements KeyListener
 	
 	public void drawPowerUps(Graphics2D g) {
 		for (int i = 0; i < powerUpBricks.length; i++) {
-			for (int j = 0; j < powerUpBricks[0].length; j++) {
-				PowerUpBrick powerUp = powerUpBricks[i][j];
+			PowerUpBrick powerUp = powerUpBricks[i];
+			if (powerUp.health > 0) {
 				g.setColor(powerUp.getColor());
-//				g.fillRect(powerUp.xCoordinate * brickHeight, powerUp.yCoordinate * brickWidth, brickHeight, brickWidth);
-//				g.drawRect(powerUp.xCoordinate * brickHeight, powerUp.yCoordinate * brickWidth, brickHeight, brickWidth);
 				g.fillRect(powerUp.xCoordinate, powerUp.yCoordinate, brickHeight, brickWidth);
-				g.drawRect(powerUp.xCoordinate, powerUp.yCoordinate, brickHeight, brickWidth);
 			}
+			else {
+				g.setColor(Color.white);
+				g.fillRect(powerUp.xCoordinate, powerUp.yCoordinate, brickHeight, brickWidth);
+			}
+			
+			g.drawRect(powerUp.xCoordinate, powerUp.yCoordinate, brickHeight, brickWidth);
+		}
+	}
+	
+	public void ifHitPowerUpApply(Ball ball) {
+		for (int i = 0; i < powerUpBricks.length; i++) {
+			PowerUpBrick powerUp = powerUpBricks[i];
+			if (powerUp.health > 0) {
+				boolean collision = powerUp.collisionDetected(ball.getX(), ball.getY());
+				if (collision) {
+					powerUp.health = 0;
+					ball.applyPowerUp(powerUp);
+				}
+			}
+			
 		}
 	}
 	public BreakableBrick[][] getBreakableBricks() {

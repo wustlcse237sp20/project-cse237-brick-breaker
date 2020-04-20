@@ -23,5 +23,22 @@ public class BrickTests {
 		newHealth = brick.health;
 		assert(newHealth == minimumHealth);
 	}
+	
+	@Test
+	public void detectCollision() {
+		int ballX = 2;
+		int ballY = 2;
+		PowerUpBrick powerUp = new PowerUpBrick(3, 3, 0, 0, PowerUpType.DAMAGE, 2);
+		boolean detected = powerUp.collisionDetected(ballX, ballY);
+		
+		assert(detected);
+		
+		ballX = 7;
+		ballY = 7;
+		detected = powerUp.collisionDetected(ballX, ballY);
+		
+		assert(!detected);
+		
+	}
 
 }
