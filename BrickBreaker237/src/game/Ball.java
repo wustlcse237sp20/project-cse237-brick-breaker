@@ -75,6 +75,18 @@ public class Ball
     		posY += dirY;
     }
     
+    public void applyPowerUp(PowerUpBrick powerUp) {
+    	PowerUpType type = powerUp.getType();
+    	switch(type) {
+	    	case DAMAGE: {
+	    		damage = damage * powerUp.getMultiplier();
+	    	}
+		default:
+			break;
+    	}
+    	
+    }
+    
     public void draw(Graphics g)
     {
     		g.setColor(color);
