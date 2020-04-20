@@ -15,8 +15,8 @@ public class GameBoard extends JPanel //implements KeyListener
 
 	public BreakableBrick breakableBricks[][];
 	public PowerUpBrick powerUpBricks[];
-	Paddle userPaddle = new Paddle();
-	Ball userBall = new Ball();
+	Paddle userPaddle;
+	Ball userBall;
 
 	private int brickHeight;
 	private int brickWidth;
@@ -28,7 +28,7 @@ public class GameBoard extends JPanel //implements KeyListener
 	private int posDirection = 3;
 	private int negDirection = -3;
 
-	public GameBoard(int boardDim, int brickRow, int brickCol) 
+	public GameBoard(int boardDim, int brickRow, int brickCol, Paddle myPaddle, Ball myBall) 
 	{
 		addKeyListener(new KeyListener() 
 		{
@@ -67,6 +67,8 @@ public class GameBoard extends JPanel //implements KeyListener
 		this.brickWidth = brickHeight / 2;
 		breakableBricks = initBricks(brickCol, brickRow);
 		powerUpBricks = initPowerUpBricks(1);
+		userPaddle = myPaddle;
+		userBall = myBall;
 	}
 
 	protected void paintComponent(Graphics g) 
