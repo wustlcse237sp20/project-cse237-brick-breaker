@@ -26,7 +26,7 @@ What commands are needed to compile and run your code from the command line?
 
 What user stories were completed this iteration?
 
-	For this iteration, we continued to implement functionality of the game. The paddle is now able to move and the ball reacts with its surroundings accordingly. We've implmented bricks that will break upon multiple hits, and introduced a color scheme to represent how many hits are required. There is also a power up that can be hit by the bowl which will grant 2x damage on the next brick hit.
+	For this iteration, we continued to implement functionality of the game. The paddle is now able to move and the ball reacts with its surroundings accordingly. We've implmented bricks that will break upon multiple hits, and introduced a color scheme to represent how many hits are required. There is also a power up that can be hit by the bowl which will grant 2x damage on the next brick hit. We also allowed the user the ability to change the color of the ball and paddle.
 
 What user stories do you intend to complete next iteration?
 
