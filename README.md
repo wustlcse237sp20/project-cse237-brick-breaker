@@ -21,3 +21,17 @@ Is there anything that you implemented but doesn't currently work?
 What commands are needed to compile and run your code from the command line?
 
 	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This should compile and launch the game (assuming java is installed).
+
+## Iteration 2 ##
+
+What user stories were completed this iteration?
+
+	For this iteration, we continued to implement functionality of the game. The paddle is now able to move and the ball reacts with its surroundings accordingly. We've implmented power-up bricks that will break upon multiple hits, and introduced a color scheme to represent how many hits are required.
+
+What user stories do you intend to complete next iteration?
+
+	By the next iteration, we hope to completely set up a level system with increasing difficulty. In addition, we would like to add UI features and options to make the game more comfortable to interact with. The paddle controls will be changed to become more responsive, and the ball reflected more accurately. 
+	
+Is there anything that you implemented but doesn't currently work?
+
+	Yes, the game does not end when the ball is missed by the paddle. It merely bounces back and keeps going. We intend to finish this after implmenting levels
