@@ -30,7 +30,7 @@ What user stories were completed this iteration?
 
 What user stories do you intend to complete next iteration?
 
-	By the next iteration, we hope to completely set up a level system with increasing difficulty. In addition, we would like to add UI features and options to make the game more comfortable to interact with. The paddle controls will be changed to become more responsive, and the ball reflected more accurately. 
+	By the next iteration, we hope to completely set up a level system with increasing difficulty. In addition, we would like to add UI features and options to make the game more comfortable to interact with. The paddle controls will be changed to become more responsive, and the ball reflected more accurately. Also remove the brick outline after it's destroyed
 	
 Is there anything that you implemented but doesn't currently work?
 
