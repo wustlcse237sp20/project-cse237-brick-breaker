@@ -21,16 +21,15 @@ public class BreakableBrick implements Brick {
 	}
 
 	@Override
-	public void destroyBrick() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void damageBrick() {
-		health -= 1;
-		if (health < 1) {
-			destroyBrick();
+	public int damageBrick(int damage) {
+		if(health >= damage){
+			health -= damage;
 		}
+		else {
+			health = 0;
+		}
+		
+		return health;
 	}
 
 	public int getHealth() {
