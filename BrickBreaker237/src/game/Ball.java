@@ -9,7 +9,7 @@ public class Ball
     private int posY;
     private int dirX;
     private int dirY;
-    public Color color;
+    private Color myBallColor;
     public int damage;
     private int length;
     private int height;
