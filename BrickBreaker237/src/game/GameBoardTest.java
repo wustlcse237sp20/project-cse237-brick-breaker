@@ -11,8 +11,10 @@ class GameBoardTest {
 		int screenDim=500;
 		int brickRow=10;
 		int brickCol=10;
+		Paddle paddle = new Paddle();
+		Ball ball = new Ball();
 		
-        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol);
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol, paddle, ball);
         
         int cols = gameBoard.getBreakableBricks().length;
         int rows = gameBoard.getBreakableBricks()[0].length;
@@ -29,8 +31,10 @@ class GameBoardTest {
 		int screenDim=500;
 		int brickRow=20;
 		int brickCol=8;
+		Paddle paddle = new Paddle();
+		Ball ball = new Ball();
 		
-        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol);
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol, paddle, ball);
         
         int cols = gameBoard.getBreakableBricks().length;
         int rows = gameBoard.getBreakableBricks()[0].length;
