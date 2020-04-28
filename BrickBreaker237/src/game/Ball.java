@@ -15,10 +15,6 @@ public class Ball
     public int damage;
     private int length;
     private int height;
-    private int initX;
-    private int initY;
-    private int initDirX;
-    private int initDirY;
     ArrayList<Color> possibleBallColors = new ArrayList<Color>( 
     	Arrays.asList(
     		Color.RED, 
@@ -36,14 +32,10 @@ public class Ball
         this.damage = 1;
         this.length = 20;
         this.height = 20;
-        this.initX = 240;
-        this.initY = 430;
-        this.initDirX = 3;
-        this.initDirY = -3;
-        this.posX = this.initX;
-        this.posY = this.initY;
-        this.dirX = this.initDirX;
-        this.dirY = -this.initDirY;
+        this.posX = 240;
+        this.posY = 430;
+        this.dirX = 3;
+        this.dirY = -3;
         this.myBallColor = Color.RED;
     }
 	
@@ -91,7 +83,7 @@ public class Ball
         this.dirY = dirY;
     }
     
-    public void updatePos() {
+    public void moveOneStep() {
         this.posX += this.dirX;
         this.posY += this.dirY;
     }
@@ -102,8 +94,15 @@ public class Ball
 	    	case DAMAGE: {
 	    		damage = damage * powerUp.getMultiplier();
 	    	}
-		default:
-			break;
+	    	case SPEED: {
+	    		//TODO: Add speed based powerup
+	    		break;
+	    	}
+	    	case LIVES: {
+	    		//TODO: Give extra life
+	    	}
+	    	default:
+	    		break;
     	}
 
     }

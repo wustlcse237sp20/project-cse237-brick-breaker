@@ -90,7 +90,7 @@ public class GameBoard extends JPanel //implements KeyListener
 			public void run() 
 			{
 				if (!gameOver) {
-					userBall.updatePos();
+					userBall.moveOneStep();
 					ifHitWallBounce(userBall);
 					ifHitBrickBounce(userBall);
 					ifHitPowerUpApply(userBall);

@@ -15,7 +15,7 @@ public class BallTest {
 		int originalX = ball.getX();
 		int originalY = ball.getY();
 		
-		ball.updatePos();
+		ball.moveOneStep();
 		int newX = ball.getX();
 		int newY = ball.getY();
 		int expectedX = originalX + xDirection;
