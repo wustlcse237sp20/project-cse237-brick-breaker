@@ -12,8 +12,8 @@ public class BallTest {
 	public void moveOneStep() {
 		Ball ball = new Ball();
 		
-		int xDirection = ball.getXdir();
-		int yDirection = ball.getYdir();
+		int xDirection = ball.xDirection;
+		int yDirection = ball.yDirection;
 		int originalX = ball.getX();
 		int originalY = ball.getY();
 		

@@ -7,10 +7,10 @@ import java.awt.Color;
 
 public class Ball
 {
-    private int posX;
-    private int posY;
-    private int dirX;
-    private int dirY;
+    private int xPosition;
+    private int yPosition;
+    public int xDirection;
+    public int yDirection;
     private Color myBallColor;
     public int damage;
     private int length;
@@ -32,19 +32,19 @@ public class Ball
         this.damage = 1;
         this.length = 20;
         this.height = 20;
-        this.posX = 240;
-        this.posY = 430;
-        this.dirX = 3;
-        this.dirY = -3;
+        this.xPosition = 240;
+        this.yPosition = 430;
+        this.xDirection = 3;
+        this.yDirection = -3;
         this.myBallColor = Color.RED;
     }
     
     public int getX() {
-        return this.posX;
+        return this.xPosition;
     }
     
     public int getY() {
-        return this.posY;
+        return this.yPosition;
     }
     
     public int getHeight() {
@@ -53,22 +53,6 @@ public class Ball
     
     public int getLength() {
         return this.length;
-    }
-    
-    public int getXdir() {
-        return this.dirX;
-    }
-    
-    public int getYdir() {
-        return this.dirY;
-    }
-    
-    public void setXdir(final int dirX) {
-        this.dirX = dirX;
-    }
-    
-    public void setYdir(final int dirY) {
-        this.dirY = dirY;
     }
     
     public Color getColor() {
@@ -90,8 +74,8 @@ public class Ball
     }
     
     public void moveOneStep() {
-        this.posX += this.dirX;
-        this.posY += this.dirY;
+        this.xPosition += this.xDirection;
+        this.yPosition += this.yDirection;
     }
     
     public void applyPowerUp(PowerUpBrick powerUp) {
@@ -115,6 +99,6 @@ public class Ball
     
     public void draw(final Graphics graphics) {
         graphics.setColor(this.myBallColor);
-        graphics.fillOval(this.posX, this.posY, this.length, this.height);
+        graphics.fillOval(this.xPosition, this.yPosition, this.length, this.height);
     }
 }

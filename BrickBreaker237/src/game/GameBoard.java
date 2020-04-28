@@ -120,7 +120,7 @@ public class GameBoard extends JPanel //implements KeyListener
 		if((myBall.getX()+ myBall.getLength() >= myPaddle.getX()) && (myBall.getX() <= myPaddle.getX() + myPaddle.getLength()) && 
 			(myBall.getY() + myBall.getHeight() >= myPaddle.getY()) && (myBall.getY() <= myPaddle.getY() + myPaddle.getHeight()))
 		{
-			myBall.setYdir(-1*myBall.getYdir());
+			myBall.yDirection = -1*myBall.yDirection;
 		}
 	}
 	
@@ -133,19 +133,19 @@ public class GameBoard extends JPanel //implements KeyListener
 	{
 		if(myBall.getX() + myBall.getLength() > boardDim)
 		{
-			myBall.setXdir(negDirection);
+			myBall.xDirection = negDirection;
 		}
 		if(myBall.getY() + myBall.getHeight() > boardDim)
 		{
-			myBall.setYdir(negDirection);
+			myBall.yDirection = negDirection;
 		}
 		if(myBall.getX() < 0)
 		{
-			myBall.setXdir(posDirection);
+			myBall.xDirection = posDirection;
 		}
 		if(myBall.getY() < 0)
 		{
-			myBall.setYdir(posDirection);
+			myBall.yDirection = posDirection;
 		}
 	}
 
@@ -169,7 +169,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
 							&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
-						myBall.setYdir(-1*myBall.getYdir());
+						myBall.yDirection = -1*myBall.yDirection;
 						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
@@ -178,7 +178,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
 						&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
-						myBall.setXdir(-1*myBall.getXdir());
+						myBall.xDirection = -1*myBall.xDirection;
 						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
@@ -187,7 +187,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
 							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
-						myBall.setYdir(-1*myBall.getYdir());
+						myBall.yDirection = -1*myBall.yDirection;
 						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
@@ -196,7 +196,7 @@ public class GameBoard extends JPanel //implements KeyListener
 					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
 							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 					{
-						myBall.setXdir(-1*myBall.getXdir());
+						myBall.xDirection = -1*myBall.xDirection;
 						breakableBricks[i][j].damageBrick(myBall.damage);
 						return true;
 					}
