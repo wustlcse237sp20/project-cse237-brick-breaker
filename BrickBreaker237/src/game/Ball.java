@@ -1,6 +1,8 @@
 package game;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.Color;
 
 public class Ball
@@ -17,7 +19,17 @@ public class Ball
     private int initY;
     private int initDirX;
     private int initDirY;
-    ArrayList<Color> possibleBallColors = new ArrayList<Color>( Arrays.asList(Color.RED, Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE));
+    ArrayList<Color> possibleBallColors = new ArrayList<Color>( 
+    	Arrays.asList(
+    		Color.RED, 
+    		Color.BLACK, 
+    		Color.BLUE,
+    		Color.CYAN, 
+    		Color.GRAY, 
+    		Color.GREEN, 
+    		Color.MAGENTA, 
+    		Color.ORANGE
+    ));
 
     
     public Ball() {
@@ -32,7 +44,7 @@ public class Ball
         this.posY = this.initY;
         this.dirX = this.initDirX;
         this.dirY = -this.initDirY;
-        this.color = Color.RED;
+        this.myBallColor = Color.RED;
     }
 	
     public void changeColor(Color specificColor)
@@ -84,17 +96,20 @@ public class Ball
         this.posY += this.dirY;
     }
     
-    public void applyPowerUp(final PowerUpBrick powerUpBrick) {
-        switch (Ball.Ball$1.$SwitchMap$game$PowerUpType[powerUpBrick.getType().ordinal()]) {
-            case 1: {
-                this.damage *= powerUpBrick.getMultiplier();
-                break;
-            }
-        }
+    public void applyPowerUp(PowerUpBrick powerUp) {
+    	PowerUpType type = powerUp.getType();
+    	switch(type) {
+	    	case DAMAGE: {
+	    		damage = damage * powerUp.getMultiplier();
+	    	}
+		default:
+			break;
+    	}
+
     }
     
     public void draw(final Graphics graphics) {
-        graphics.setColor(this.color);
+        graphics.setColor(this.myBallColor);
         graphics.fillOval(this.posX, this.posY, this.length, this.height);
     }
 }
