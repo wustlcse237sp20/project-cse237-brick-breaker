@@ -46,5 +46,20 @@ public class BallTest {
 		
 	}
 	
+	@Test
+	public void applyDamagePowerup() {
+		Ball ball = new Ball();
+		int multiplier = 3;
+		int originalDamage = ball.damage;
+		PowerUpBrick damagePowerUp = new PowerUpBrick(5, 5, 0, 0, PowerUpType.DAMAGE, multiplier);
+		
+		ball.applyPowerUp(damagePowerUp);
+		int newDamage = ball.damage;
+		int expectedDamage = originalDamage * multiplier;
+		
+		assertTrue(newDamage == expectedDamage);
+		
+	}
+	
 
 }
