@@ -2,6 +2,8 @@ package game;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
 public class BallTest {
@@ -24,6 +26,23 @@ public class BallTest {
 		assertTrue(newX == expectedX);
 		assertTrue(newY == expectedY);
 		
+		
+	}
+	
+	@Test
+	public void changeColor() {
+		Ball ball = new Ball();
+		Color originalColor = ball.getColor();
+		Color validColor = Color.GREEN;
+		Color invalidColor = Color.WHITE;
+		Color fallbackColor = Color.BLACK;
+		
+		Color newColor = ball.changeColor(validColor);
+		
+		assertTrue(newColor == validColor);
+		newColor = ball.changeColor(invalidColor);
+		assertTrue(newColor != invalidColor);
+		assertTrue(newColor == fallbackColor);
 		
 	}
 	

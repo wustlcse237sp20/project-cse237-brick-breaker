@@ -38,18 +38,6 @@ public class Ball
         this.dirY = -3;
         this.myBallColor = Color.RED;
     }
-	
-    public void changeColor(Color specificColor)
-    {
-	    if(possibleBallColors.contains(specificColor))
-	    {
-	    	myBallColor = specificColor;
-	    }
-	    else
-	    {
-	    	myBallColor = Color.BLACK;
-	    }
-    }
     
     public int getX() {
         return this.posX;
@@ -81,6 +69,24 @@ public class Ball
     
     public void setYdir(final int dirY) {
         this.dirY = dirY;
+    }
+    
+    public Color getColor() {
+    	return this.myBallColor;
+    }
+    
+    public Color changeColor(Color specificColor)
+    {
+	    if(possibleBallColors.contains(specificColor))
+	    {
+	    	myBallColor = specificColor;
+	    }
+	    else
+	    {
+	    	myBallColor = Color.BLACK;
+	    }
+	    
+	    return myBallColor;
     }
     
     public void moveOneStep() {
