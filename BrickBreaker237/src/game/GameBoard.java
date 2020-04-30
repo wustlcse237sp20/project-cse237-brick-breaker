@@ -122,7 +122,7 @@ public class GameBoard extends JPanel //implements KeyListener
 			for (int j = 0; j < brickRow; j++) {
 				//block hit left side
 				BreakableBrick brick = breakableBricks[i][j];
-				if(brick.monitorCollision(myBall, brick)){
+				if(brick.monitorCollision(myBall)){
 					return true;
 				}
 			}
@@ -211,7 +211,6 @@ public class GameBoard extends JPanel //implements KeyListener
 					ball.applyPowerUp(powerUp);
 				}
 			}
-			
 		}
 	}
 
