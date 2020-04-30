@@ -25,5 +25,22 @@ class GameBoardTest {
 			}
 		}
 	}
+	
+	@Test
+	void testBallCollidesAndBouncesOffBricks() {
+		int screenDim=500;
+		int brickRow=20;
+		int brickCol=8;
+		Paddle paddle = new Paddle();
+		Ball ball = new Ball();
+		
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol, paddle, ball);
+        
+        int cols = gameBoard.getBreakableBricks().length;
+        int rows = gameBoard.getBreakableBricks()[0].length;
+
+		assertTrue(gameBoard.ifHitBrickBounce(gameBoard.getBall()));
+		
+	}
 
 }
