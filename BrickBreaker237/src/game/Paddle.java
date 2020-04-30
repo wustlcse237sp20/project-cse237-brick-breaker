@@ -70,4 +70,18 @@ public class Paddle
     	g.setColor(myPaddleColor);
     	g.fillRect(posX, posY, length, height);
     }
+
+	/**
+	 * Checks the positions of the Ball and Paddle to see whether they hit each other. If so the ball's 
+	 * y-direction is inverted
+	 * @param myBall
+	 */
+    public void managePaddleCollision(Ball myBall)
+    {
+        if((myBall.getX()+ myBall.getLength() >= this.getX()) && (myBall.getX() <= this.getX() + this.getLength()) && 
+            (myBall.getY() + myBall.getHeight() >= this.getY()) && (myBall.getY() <= this.getY() + this.getHeight()))
+        {
+            myBall.yDirection = -1*myBall.yDirection;
+        }
+    }
 }

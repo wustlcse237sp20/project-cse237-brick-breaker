@@ -41,4 +41,41 @@ public class BrickTests {
 		
 	}
 
+	@Test
+	void testBallCollidesAndBouncesOffBricks() {
+		int screenDim=500;
+		int brickRow=20;
+		int brickCol=8;
+		Paddle paddle = new Paddle();
+		Ball ball = new Ball();
+		
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol, paddle, ball);
+        
+        int cols = gameBoard.getBreakableBricks().length;
+        int rows = gameBoard.getBreakableBricks()[0].length;
+
+		assertTrue(gameBoard.ifHitBrickBounce(gameBoard.getBall()));
+		
+	}
+
+	@Test
+	void testMonitorBrickCollision() {
+		int screenDim=500;
+		int brickRow=1;
+		int brickCol=1;
+		Paddle paddle = new Paddle();
+		Ball ball = new Ball();
+		
+        GameBoard gameBoard = new GameBoard(screenDim, brickRow, brickCol, paddle, ball);
+        
+        int cols = gameBoard.getBreakableBricks().length;
+        int rows = gameBoard.getBreakableBricks()[0].length;
+		
+		for (int i = 0; i < cols; i++) {
+			for (int j = 0; j < rows; j++) {
+				assertFalse(getBreakableBricks()[i][j].monitorCollision(ball));
+			}
+		}
+	}
+
 }

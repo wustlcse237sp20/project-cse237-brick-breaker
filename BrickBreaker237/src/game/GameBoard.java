@@ -90,11 +90,12 @@ public class GameBoard extends JPanel //implements KeyListener
 			public void run() 
 			{
 				if (!gameOver) {
-					userBall.updatePos();
-					ifHitWallBounce(userBall);
+					userBall.moveOneStep();
+					userBall.manageWallCollision(boardDim, posDirection, negDirection);
 					ifHitBrickBounce(userBall);
 					ifHitPowerUpApply(userBall);
-					ifBallHitPaddleBounce(userBall, userPaddle);
+					userPaddle.managePaddleCollision(userBall);
+
 					repaint();
 				} else {
 					// game over state
@@ -109,45 +110,6 @@ public class GameBoard extends JPanel //implements KeyListener
 		userPaddle.draw(g);
 		userBall.draw(g);
 	}
-	/**
-	 * Checks the positions of the Ball and Paddle to see whether they hit each other. If so the ball's 
-	 * y-direction is inverted
-	 * @param myBall
-	 * @param myPaddle
-	 */
-	public void ifBallHitPaddleBounce(Ball myBall, Paddle myPaddle)
-	{
-		if((myBall.getX()+ myBall.getLength() >= myPaddle.getX()) && (myBall.getX() <= myPaddle.getX() + myPaddle.getLength()) && 
-			(myBall.getY() + myBall.getHeight() >= myPaddle.getY()) && (myBall.getY() <= myPaddle.getY() + myPaddle.getHeight()))
-		{
-			myBall.setYdir(-1*myBall.getYdir());
-		}
-	}
-	
-	/**
-	 * Looks at the positions and size of the ball to determine if it will hit a wall and, if so,
-	 * changes the X and Y directions appropriately
-	 * @param myBall
-	 */
-	public void ifHitWallBounce(Ball myBall)
-	{
-		if(myBall.getX() + myBall.getLength() > boardDim)
-		{
-			myBall.setXdir(negDirection);
-		}
-		if(myBall.getY() + myBall.getHeight() > boardDim)
-		{
-			myBall.setYdir(negDirection);
-		}
-		if(myBall.getX() < 0)
-		{
-			myBall.setXdir(posDirection);
-		}
-		if(myBall.getY() < 0)
-		{
-			myBall.setYdir(posDirection);
-		}
-	}
 
 	/**
 	 * Looks at the positions and size of the ball to determine if it will hit a block and, if so,
@@ -159,47 +121,9 @@ public class GameBoard extends JPanel //implements KeyListener
 		for (int i = 0; i < brickCol; i++) {
 			for (int j = 0; j < brickRow; j++) {
 				//block hit left side
-				int blockX = breakableBricks[i][j].getxCoordinate();
-				int blockY = breakableBricks[i][j].getyCoordinate();
-				int blockXDim = breakableBricks[i][j].getxDim();
-				int blockYDim = breakableBricks[i][j].getyDim();
-
-				if(breakableBricks[i][j].getHealth() > 0){
-					//top side
-					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
-							&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
-					{
-						myBall.setYdir(-1*myBall.getYdir());
-						breakableBricks[i][j].damageBrick(myBall.damage);
-						return true;
-					}
-					
-					//right side
-					if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
-						&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
-					{
-						myBall.setXdir(-1*myBall.getXdir());
-						breakableBricks[i][j].damageBrick(myBall.damage);
-						return true;
-					}
-
-					//bottom side
-					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
-							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
-					{
-						myBall.setYdir(-1*myBall.getYdir());
-						breakableBricks[i][j].damageBrick(myBall.damage);
-						return true;
-					}
-
-					//left side
-					if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
-							&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
-					{
-						myBall.setXdir(-1*myBall.getXdir());
-						breakableBricks[i][j].damageBrick(myBall.damage);
-						return true;
-					}
+				BreakableBrick brick = breakableBricks[i][j];
+				if(brick.monitorCollision(myBall)){
+					return true;
 				}
 			}
 		}
@@ -227,7 +151,7 @@ public class GameBoard extends JPanel //implements KeyListener
 	}
 
 	/**
-	 * Redraw/update graphics for breakable bricks
+	 * Redraw breakable bricks
 	 * 
 	 * @param g
 	 */
@@ -287,9 +211,9 @@ public class GameBoard extends JPanel //implements KeyListener
 					ball.applyPowerUp(powerUp);
 				}
 			}
-			
 		}
 	}
+
 	public BreakableBrick[][] getBreakableBricks() {
 		return breakableBricks;
 	}
