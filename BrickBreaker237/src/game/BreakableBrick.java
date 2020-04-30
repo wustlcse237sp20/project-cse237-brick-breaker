@@ -36,56 +36,68 @@ public class BreakableBrick implements Brick {
 		return health;
 	}
 
-	public void setHealth(int health) {
-		this.health = health;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public void setRow(int row) {
-		this.row = row;
-	}
-
-	public int getCol() {
-		return col;
-	}
-
-	public void setCol(int col) {
-		this.col = col;
-	}
-
 	public int getxDim() {
 		return xDim;
-	}
-
-	public void setxDim(int xDim) {
-		this.xDim = xDim;
 	}
 
 	public int getyDim() {
 		return yDim;
 	}
 
-	public void setyDim(int yDim) {
-		this.yDim = yDim;
-	}
-
 	public int getxCoordinate() {
 		return xCoordinate;
 	}
-
-	public void setxCoordinate(int xCoordinate) {
-		this.xCoordinate = xCoordinate;
-	}
-
+	
 	public int getyCoordinate() {
 		return yCoordinate;
 	}
+	
+	public boolean monitorCollision(Ball myBall, BreakableBrick brick)
+	{
 
-	public void setyCoordinate(int yCoordinate) {
-		this.yCoordinate = yCoordinate;
+		int blockX = brick.getxCoordinate();
+		int blockY = brick.getyCoordinate();
+		int blockXDim = brick.getxDim();
+		int blockYDim = brick.getyDim();
+
+		if(brick.getHealth() > 0){
+			//top side
+			if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
+					&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
+			{
+				myBall.yDirection = -1*myBall.yDirection;
+				brick.damageBrick(myBall.damage);
+				return true;
+			}
+			
+			//right side
+			if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
+				&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
+			{
+				myBall.xDirection = -1*myBall.xDirection;
+				brick.damageBrick(myBall.damage);
+				return true;
+			}
+
+			//bottom side
+			if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
+					&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
+			{
+				myBall.yDirection = -1*myBall.yDirection;
+				brick.damageBrick(myBall.damage);
+				return true;
+			}
+
+			//left side
+			if((myBall.getX() > blockX && myBall.getX() < blockX + blockXDim) 
+					&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
+			{
+				myBall.xDirection = -1*myBall.xDirection;
+				brick.damageBrick(myBall.damage);
+				return true;
+			}
+		}
+
+		return false;
 	}
-
 }
