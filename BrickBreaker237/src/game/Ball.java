@@ -101,4 +101,30 @@ public class Ball
         graphics.setColor(this.myBallColor);
         graphics.fillOval(this.xPosition, this.yPosition, this.length, this.height);
     }
+
+    /**
+	 * Looks at the positions and size of the ball to determine if it will hit a wall and, if so,
+	 * changes the X and Y directions appropriately
+	 * @param boardDim dimensions of board
+     * @param posDirection magnitude of ball forward direction
+     * @param negDirection magnitude of ball reverse direction
+	 */
+    public void manageWallCollision(int boardDim, int posDirection, int negDirection){
+        if(this.getX() + this.getLength() > boardDim)
+        {
+            this.xDirection = negDirection;
+        }
+        if(this.getY() + this.getHeight() > boardDim)
+        {
+            this.yDirection = negDirection;
+        }
+        if(this.getX() < 0)
+        {
+            this.xDirection = posDirection;
+        }
+        if(this.getY() < 0)
+        {
+            this.yDirection = posDirection;
+        }
+    }
 }
