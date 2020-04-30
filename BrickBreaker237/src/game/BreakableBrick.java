@@ -52,21 +52,21 @@ public class BreakableBrick implements Brick {
 		return yCoordinate;
 	}
 	
-	public boolean monitorCollision(Ball myBall, BreakableBrick brick)
+	public boolean monitorCollision(Ball myBall)
 	{
 
-		int blockX = brick.getxCoordinate();
-		int blockY = brick.getyCoordinate();
-		int blockXDim = brick.getxDim();
-		int blockYDim = brick.getyDim();
+		int blockX = this.getxCoordinate();
+		int blockY = this.getyCoordinate();
+		int blockXDim = this.getxDim();
+		int blockYDim = this.getyDim();
 
-		if(brick.getHealth() > 0){
+		if(this.getHealth() > 0){
 			//top side
 			if((myBall.getX() + myBall.getLength() > blockX && myBall.getX() < blockX + blockXDim) 
 					&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 			{
 				myBall.yDirection = -1*myBall.yDirection;
-				brick.damageBrick(myBall.damage);
+				this.damageBrick(myBall.damage);
 				return true;
 			}
 			
@@ -75,7 +75,7 @@ public class BreakableBrick implements Brick {
 				&& (myBall.getY() - myBall.getHeight() < blockY  && myBall.getY() > blockY - blockYDim))
 			{
 				myBall.xDirection = -1*myBall.xDirection;
-				brick.damageBrick(myBall.damage);
+				this.damageBrick(myBall.damage);
 				return true;
 			}
 
@@ -84,7 +84,7 @@ public class BreakableBrick implements Brick {
 					&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 			{
 				myBall.yDirection = -1*myBall.yDirection;
-				brick.damageBrick(myBall.damage);
+				this.damageBrick(myBall.damage);
 				return true;
 			}
 
@@ -93,11 +93,10 @@ public class BreakableBrick implements Brick {
 					&& (myBall.getY() < blockY  && myBall.getY() > blockY - blockYDim))
 			{
 				myBall.xDirection = -1*myBall.xDirection;
-				brick.damageBrick(myBall.damage);
+				this.damageBrick(myBall.damage);
 				return true;
 			}
 		}
-
 		return false;
 	}
 }
