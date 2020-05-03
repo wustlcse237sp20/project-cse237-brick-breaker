@@ -1,6 +1,8 @@
 package game;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -89,7 +91,8 @@ public class GameBoard extends JPanel //implements KeyListener
 			@Override
 			public void run() 
 			{
-				if (!gameOver) {
+				checkIfGameOver();
+				if (gameOver) {
 					userBall.moveOneStep();
 					userBall.manageWallCollision(boardDim, posDirection, negDirection);
 					ifHitBrickBounce(userBall);
@@ -98,7 +101,8 @@ public class GameBoard extends JPanel //implements KeyListener
 					repaint();
 				} else {
 					// game over state
-					
+					Window w = SwingUtilities.getWindowAncestor(GameBoard.this);
+			        w.dispose();
 				}
 			}
 		}, 0, 1000 / FPS, TimeUnit.MILLISECONDS);
@@ -108,6 +112,20 @@ public class GameBoard extends JPanel //implements KeyListener
 	{
 		userPaddle.draw(g);
 		userBall.draw(g);
+	}
+	
+	public boolean checkIfGameOver() {
+		for (int i = 0; i < brickCol; i++) {
+			for (int j = 0; j < brickRow; j++) {
+				//block hit left side
+				BreakableBrick brick = breakableBricks[i][j];
+				if (brick.getHealth() ==2) {
+					this.gameOver = true;
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**

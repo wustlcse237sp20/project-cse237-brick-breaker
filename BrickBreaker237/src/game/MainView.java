@@ -98,7 +98,7 @@ public class MainView{
         gameView.setTitle("Brick Breaker");
         gameView.setBounds(screenTopLeftCornerDim, screenTopLeftCornerDim, screenDim, screenDim);
 	gameView.setResizable(false);
-        gameView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        gameView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         gameView.getContentPane().add(gameBoard);
 
         gameView.setVisible(true);
