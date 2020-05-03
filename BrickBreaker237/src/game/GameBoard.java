@@ -119,13 +119,13 @@ public class GameBoard extends JPanel //implements KeyListener
 			for (int j = 0; j < brickRow; j++) {
 				//block hit left side
 				BreakableBrick brick = breakableBricks[i][j];
-				if (brick.getHealth() ==2) {
-					this.gameOver = true;
-					return true;
+				if (brick.getHealth() != 0 ) {
+					return false;
 				}
 			}
 		}
-		return false;
+		this.gameOver = true;
+		return true;
 	}
 
 	/**
