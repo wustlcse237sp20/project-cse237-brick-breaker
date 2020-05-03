@@ -23,7 +23,7 @@ public class Paddle
     }
     
     //If the player wants a specific color they will enter it when prompted and receive a paddle of that color
-    public void changeColor(Color specificColor)
+    public Color changeColor(Color specificColor)
     {
 	    	if(possiblePaddleColors.contains(specificColor))
 	    	{
@@ -33,6 +33,7 @@ public class Paddle
 	    	{
 	    		myPaddleColor = Color.BLACK;
 	    	}
+	    	return myPaddleColor;
     }
     
     public int getX()
@@ -63,6 +64,10 @@ public class Paddle
     public void setY(int newY)
     {
     	posY = newY;
+    }
+    
+    public Color getColor() {
+    	return myPaddleColor;
     }
     
     public void draw(Graphics g)
