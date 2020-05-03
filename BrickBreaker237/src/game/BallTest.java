@@ -61,5 +61,15 @@ public class BallTest {
 		
 	}
 	
-
+	@Test
+	public void manageWallCollision()
+	{
+		Ball ball = new Ball();
+		int boardDim = 500;
+		int posDirection = 3;
+		int negDirection = -3;
+		ball.moveOneStep();
+		assertTrue(ball.xDirection == posDirection);
+		assertTrue(ball.yDirection == negDirection);
+	}
 }

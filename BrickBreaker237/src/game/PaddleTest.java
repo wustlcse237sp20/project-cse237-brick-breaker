@@ -53,5 +53,13 @@ public class PaddleTest {
 		assertTrue(currentColor != testColor);
 		assertTrue(currentColor == defaultColor);
 	}
-
+	
+	@Test
+	public void managePaddleCollision()
+	{
+		Ball ball = new Ball();
+		ball.yDirection = -3;
+		int newDirection = -1*ball.yDirection;
+		assertTrue(newDirection == 3);
+	}
 }
