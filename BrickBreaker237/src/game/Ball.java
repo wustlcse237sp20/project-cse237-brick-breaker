@@ -22,8 +22,8 @@ public class Ball
         this.height = 20;
         this.xPosition = 240;
         this.yPosition = 430;
-        this.xDirection = 3;
-        this.yDirection = -3;
+        this.xDirection = 2;
+        this.yDirection = -2;
         this.myBallColor = Color.RED;
     }
     
