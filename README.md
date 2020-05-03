@@ -44,6 +44,8 @@ What user stories were completed this iteration?
 
 Is there anything that you implemented but doesn't currently work?
 
+	Everything implemented works!
+
 What commands are needed to compile and run your code from the command line?
 
 	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This should compile and launch the game (assuming java is installed).
