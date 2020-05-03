@@ -13,8 +13,6 @@ public class Paddle
     private static int initX = 200;
     private static int initY = 450;
 
-    ArrayList<Color> possiblePaddleColors = new ArrayList<Color>( Arrays.asList(Color.RED, Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE));
-    
     public Paddle()
     {
 	    	posX = initX;
@@ -25,15 +23,8 @@ public class Paddle
     //If the player wants a specific color they will enter it when prompted and receive a paddle of that color
     public Color changeColor(Color specificColor)
     {
-	    	if(possiblePaddleColors.contains(specificColor))
-	    	{
-	    		myPaddleColor = specificColor;
-	    	}
-	    	else
-	    	{
-	    		myPaddleColor = Color.BLACK;
-	    	}
-	    	return myPaddleColor;
+    	myPaddleColor = specificColor;
+	    return myPaddleColor;
     }
     
     public int getX()
