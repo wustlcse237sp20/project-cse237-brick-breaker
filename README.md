@@ -2,7 +2,7 @@
 
 ## Description ##
 
-BrickBreaker is a 2D game where the player must deflect a bouncing ball with a paddle to hit and break bricks. The paddle moves horizontally, and the player loses if the ball slips past the paddle. When all the bricks have been broken, the player can advance to a harder level. The bricks get progressively harder to break.
+BrickBreaker is a 2D game where the player must deflect a bouncing ball with a paddle to hit and break bricks. The paddle moves horizontally, and the player must determine the angle in which to hit the ball against the paddle/walls to break all the bricks. The bricks will take multiple hits before breaking, unless the red power up is hit by the ball (in which case, the next hit will count for two hits).
 
 ## Iteration 1 ##
 
@@ -40,12 +40,12 @@ Is there anything that you implemented but doesn't currently work?
 
 What user stories were completed this iteration?
 
-	As a developer, the code was refactored so that better practices were in place and it was easier to understand. In addition, tests for the ball and paddle class were completed. As a user, the game is playable with no class compilation issues and the ball/paddle have responsive controls now.
+	As a developer, the code was refactored so that better practices were in place and it was easier to understand. In addition, tests for the ball and paddle class were completed. As a user, the game is playable with no class compilation issues and the ball/paddle have responsive controls.
 
 Is there anything that you implemented but doesn't currently work?
 
-	Everything implemented works!
+	Everything implemented works! We did not implement the other powerups, such as one that would speed up the ball.
 
 What commands are needed to compile and run your code from the command line?
 
-	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This should compile and launch the game (assuming java is installed).
+	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This will compile and launch the game (assuming java is installed).
