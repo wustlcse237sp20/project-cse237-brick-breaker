@@ -35,3 +35,15 @@ What user stories do you intend to complete next iteration?
 Is there anything that you implemented but doesn't currently work?
 
 	Yes, the game does not end when the ball is missed by the paddle. It merely bounces back and keeps going. We intend to finish this after implmenting levels
+
+## Iteration 3 ##
+
+What user stories were completed this iteration?
+
+	As a developer, the code was refactored so that better practices were in place and it was easier to understand. In addition, tests for the ball and paddle class were completed. As a user, the game is playable with no class compilation issues and the ball/paddle have responsive controls now.
+
+Is there anything that you implemented but doesn't currently work?
+
+What commands are needed to compile and run your code from the command line?
+
+	From the project folder, run the script runBrickBreaker.sh by typing ./runBrickBreaker.sh in the command line. This should compile and launch the game (assuming java is installed).
