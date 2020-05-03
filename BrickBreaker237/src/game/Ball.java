@@ -15,18 +15,6 @@ public class Ball
     public int damage;
     private int length;
     private int height;
-    ArrayList<Color> possibleBallColors = new ArrayList<Color>( 
-    	Arrays.asList(
-    		Color.RED, 
-    		Color.BLACK, 
-    		Color.BLUE,
-    		Color.CYAN, 
-    		Color.GRAY, 
-    		Color.GREEN, 
-    		Color.MAGENTA, 
-    		Color.ORANGE
-    ));
-
     
     public Ball() {
         this.damage = 1;
@@ -61,15 +49,7 @@ public class Ball
     
     public Color changeColor(Color specificColor)
     {
-	    if(possibleBallColors.contains(specificColor))
-	    {
-	    	myBallColor = specificColor;
-	    }
-	    else
-	    {
-	    	myBallColor = Color.BLACK;
-	    }
-	    
+	    myBallColor = specificColor;
 	    return myBallColor;
     }
     
