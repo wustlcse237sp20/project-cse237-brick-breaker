@@ -25,8 +25,8 @@ public class GameBoard extends JPanel //implements KeyListener
 	private int boardDim;
 	private boolean gameOver;
 
-	private int posDirection = 2;
-	private int negDirection = -2;
+	private int posDirection = 3;
+	private int negDirection = -3;
 
 	public GameBoard(int boardDim, int brickRow, int brickCol, Paddle myPaddle, Ball myBall) 
 	{
