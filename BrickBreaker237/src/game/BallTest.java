@@ -34,14 +34,11 @@ public class BallTest {
 		Ball ball = new Ball();
 		Color originalColor = ball.getColor();
 		Color validColor = Color.GREEN;
-		Color invalidColor = Color.WHITE;
-		Color fallbackColor = Color.BLACK;
+		Color fallbackColor = Color.RED;
 		
 		Color newColor = ball.changeColor(validColor);
 		
 		assertTrue(newColor == validColor);
-		newColor = ball.changeColor(invalidColor);
-		assertTrue(newColor != invalidColor);
 		assertTrue(newColor == fallbackColor);
 		
 	}
@@ -61,5 +58,15 @@ public class BallTest {
 		
 	}
 	
-
+	@Test
+	public void manageWallCollision()
+	{
+		Ball ball = new Ball();
+		int boardDim = 500;
+		int posDirection = 3;
+		int negDirection = -3;
+		ball.moveOneStep();
+		assertTrue(ball.xDirection == posDirection);
+		assertTrue(ball.yDirection == negDirection);
+	}
 }

@@ -2,6 +2,11 @@ package game;
 
 import org.junit.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.awt.Color;
+
 public class BrickTests {
 	
 	@Test
@@ -73,7 +78,7 @@ public class BrickTests {
 		
 		for (int i = 0; i < cols; i++) {
 			for (int j = 0; j < rows; j++) {
-				assertFalse(getBreakableBricks()[i][j].monitorCollision(ball));
+				assertFalse(gameBoard.getBreakableBricks()[i][j].monitorCollision(ball));
 			}
 		}
 	}

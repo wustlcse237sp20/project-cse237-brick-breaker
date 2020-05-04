@@ -35,13 +35,13 @@ public class GameBoard extends JPanel //implements KeyListener
 			   @Override
 			   public void keyTyped(KeyEvent e) 
 			   {
-				   //Not written yet
+				   //Unused
 			   }
 			   
 			   @Override
 			   public void keyReleased(KeyEvent e) 
 			   {
-				   //Not written yet
+				   //Unused
 			   }
 			   
 			   @Override
@@ -95,7 +95,6 @@ public class GameBoard extends JPanel //implements KeyListener
 					ifHitBrickBounce(userBall);
 					ifHitPowerUpApply(userBall);
 					userPaddle.managePaddleCollision(userBall);
-
 					repaint();
 				} else {
 					// game over state
@@ -116,18 +115,16 @@ public class GameBoard extends JPanel //implements KeyListener
 	 * changes the X and Y directions appropriately and subtracts health from block
 	 * @param myBall
 	 */
-	public boolean ifHitBrickBounce(Ball myBall)
+	public void ifHitBrickBounce(Ball myBall)
 	{
 		for (int i = 0; i < brickCol; i++) {
 			for (int j = 0; j < brickRow; j++) {
 				//block hit left side
 				BreakableBrick brick = breakableBricks[i][j];
 				if(brick.monitorCollision(myBall)){
-					return true;
 				}
 			}
 		}
-		return false;
 	}
 
 	public BreakableBrick[][] initBricks(int col, int row) {
